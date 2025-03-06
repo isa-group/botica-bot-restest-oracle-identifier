@@ -1,0 +1,11 @@
+# DS_Store Files
+**/.DS_Store
+
+# IDEA Files
+.idea/
+
+# VSCode Settings
+.vscode/
+
+# Generated Files
+target/
