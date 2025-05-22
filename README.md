@@ -1,19 +1,26 @@
-# botica-seed-java
-Template project to facilitate implementing, compiling, and building Botica bots using Maven and [botica-lib-java](https://github.com/isa-group/botica-lib-java/).
+# Oracle Identifier Bot for RESTest
 
-## Usage
+This bot collects test execution data
+from [RESTest reporter bots](https://github.com/isa-group/botica-bot-restest-reporter/) until it
+reaches a minimum threshold of test cases, then analyzes the collected data to identify invariants
+that consistently hold across API responses, using the AGORA (Automated Generation of test Oracles
+for REST APIs) framework.
 
-1. [Create a repository based on this template](https://github.com/new?template_name=botica-seed-java&template_owner=isa-group).
+## Setup
 
-2. Modify the `pom.xml` file, specifically:
-   1. The `<groupId>` and `<artifactId>` tags.
-   2. The `<mainClass>` property, pointing to your launcher class. This assumes that you renamed the template classes or packages in `src/`.
-   3. The `<imageTag>` property. The build script will take the tag for the resulting Docker image from this property.
+- `ORACLE_BOT_MIN_TEST_CASES`: Minimum number of test cases required before triggering invariant
+  detection (default: 50)
 
-3. Implement your bot's logic. You can follow one of [these examples](./src/main/java/com/example/examples).
-  > [!NOTE]
-  > Full project examples are also available, with their respective Java implementations. Check out [botica-infrastructure-fishbowl](https://github.com/isa-group/botica-infrastructure-fishbowl) or [botica-infrastructure-restest](https://github.com/isa-group/botica-infrastructure-restest).
+## Integration with other bots
 
-4. Run the build script. This script compiles the Maven project and builds the Docker image for you based on the `<imageTag>` property in `pom.xml`. The `maven-assembly-plugin` will include your dependencies in the compiled JAR.
-   1. For Linux or macOS systems, run `./build.sh` in your IDE's terminal.
-   2. For Windows systems, run `build.bat` in your IDE's terminal.
+- Identified invariants will be sent to the user via Telegram if using
+  the [Telegram frontend bot](https://github.com/isa-group/botica-bot-telegram-frontend/) within the
+  infrastructure.
+
+## Credits
+
+This bot makes use of AGORA (Automated Generation of test Oracles for REST APIs), the first
+approach for the automated generation of test oracles for REST APIs in a black-box context.
+
+Alonso, Juan C. and Segura, Sergio and Ruiz-Cortés, Antonio. AGORA: Automated
+Generation of test Oracles for REST APIs.
