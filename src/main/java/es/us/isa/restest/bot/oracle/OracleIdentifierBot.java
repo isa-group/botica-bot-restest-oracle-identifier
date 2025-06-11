@@ -89,6 +89,7 @@ public class OracleIdentifierBot extends BaseBot {
         this.identifyTestOracles(loader, testDataDirectory, beetInputFilePath);
       }
     } catch (Exception e) {
+      log.error("There was an error while identifying test oracles for %s", e);
       this.notifyError(
           "There was an error while identifying test oracles for %s: %s"
               .formatted(loader.getExperimentName(), e.toString()));
