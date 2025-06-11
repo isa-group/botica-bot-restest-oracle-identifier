@@ -109,7 +109,7 @@ public final class BeetInputFileGenerator {
 
       for (String column : columnsToKeep) {
         if (row.containsKey(column)) {
-          filteredRow.put(column, row.get(column));
+          filteredRow.put(column, row.get(column).replace("\n", ""));
         }
       }
 
